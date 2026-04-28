@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button onclick="logout()">Logout</button>
+<h1>Admin Dashboard</h1>
+
+<div class="container">
+
+<!-- STUDENTS -->
+<div class="card">
+<h2>Add Student</h2>
+<input id="id" placeholder="ID">
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<input id="room" placeholder="Room ID">
+<input id="fee" placeholder="Fee Status">
+
+<button onclick="addStudent()">Add Student</button>
+<button onclick="generateStudents()">Generate 200 Students</button>
+
+<ul id="studentList"></ul>
+</div>
+
+<!-- ROOMS -->
+<div class="card">
+<h2>Add Room</h2>
+<input id="room_id" placeholder="Room ID">
+<input id="capacity" placeholder="Capacity">
+<input id="occupied" placeholder="Occupied">
+<button onclick="addRoom()">Add</button>
+<ul id="roomList"></ul>
+</div>
+
+<!-- FEES -->
+<div class="card">
+<h2>Add Fee</h2>
+<input id="student_id_fee" placeholder="Student ID">
+<input id="amount" placeholder="Amount">
+<input id="status_fee" placeholder="Status">
+<button onclick="addFee()">Add</button>
+<ul id="feeList"></ul>
+</div>
+
+<!-- COMPLAINTS -->
+<div class="card">
+<h2>Add Complaint</h2>
+<input id="student_id_comp" placeholder="Student ID">
+<input id="message" placeholder="Message">
+<input id="status_comp" placeholder="Status">
+<button onclick="addComplaint()">Add</button>
+<ul id="complaintList"></ul>
+</div>
+
+<!-- SEARCH -->
+<div class="card">
+<h2>Search Student</h2>
+<input id="searchId" placeholder="Enter Student ID">
+<button onclick="searchStudent()">Search</button>
+<div id="result"></div>
+</div>
+
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
