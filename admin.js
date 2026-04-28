@@ -105,7 +105,17 @@ function addComplaint() {
 
 // DISPLAY
 function displayRooms() {
-    roomList.innerHTML = rooms.map(r => `<li>${r.room_id} (${r.occupied}/${r.capacity})</li>`).join("");
+    const list = document.getElementById("roomList");
+
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    rooms.forEach(r => {
+        list.innerHTML += `
+            <li>Room ${r.room_id} | Capacity: ${r.capacity} | Occupied: ${r.occupied}</li>
+        `;
+    });
 }
 
 function displayFees() {
@@ -173,6 +183,9 @@ if (location.pathname.includes("admin.html")) {
 }
 
 // LOAD ALL
-displayRooms();
-displayFees();
-displayComplaints();
+if (location.pathname.includes("admin.html")) {
+    displayStudents();
+    displayRooms();
+    displayFees();
+    displayComplaints();
+}

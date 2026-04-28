@@ -1,4 +1,4 @@
-# hostel-management-system# Hostel Management System
+# Web-Based Hostel Management System
 
 - Admin & Student login
 - Manage Students, Rooms, Fees, Complaints
