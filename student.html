@@ -6,38 +6,39 @@
 </head>
 <body>
 
-<button onclick="logoutStudent()" class="logout-btn">Logout</button>
-
 <h1 class="main-title">🏠 Web-Based Hostel Management System</h1>
 <h2>Student Dashboard</h2>
 
 <div class="container">
 
-    <div class="card">
-        <h2>Student Details</h2>
-        <div id="profile"></div>
-    </div>
+<div class="card">
+    <h2 class="section-title student">👤 Student Details</h2>
+    <div id="profile"></div>
+</div>
 
-    <div class="card">
-        <h2>Room Details</h2>
-        <div id="roomDetails"></div>
-    </div>
+<div class="card">
+    <h2 class="section-title room">🏠 Room Details</h2>
+    <div id="roomDetails"></div>
+</div>
 
-    <div class="card">
-        <h2>Fee Details</h2>
-        <div id="feeDetails"></div>
-    </div>
+<div class="card">
+    <h2 class="section-title fee">💰 Fee Details</h2>
+    <div id="feeDetails"></div>
+</div>
 
-    <div class="card">
-        <h2>My Complaints</h2>
-        <div id="complaints"></div>
-    </div>
+<div class="card">
+    <h2 class="section-title complaint">⚠️ My Complaints</h2>
+    <div id="complaints"></div>
+</div>
 
-    <div class="card">
-        <h2>Raise Complaint</h2>
-        <input id="newComplaint" placeholder="Enter your complaint">
-        <button onclick="addComplaint()">Submit Complaint</button>
-    </div>
+<div class="card">
+    <h2 class="section-title raise">✏️ Raise Complaint</h2>
+    <input id="newComplaint" placeholder="Enter your complaint">
+    <button onclick="addComplaint()">Submit Complaint</button>
+</div>
+    <div class="logout-container">
+    <button onclick="logoutStudent()" class="logout-btn">Logout</button>
+</div>
 
 </div>
 

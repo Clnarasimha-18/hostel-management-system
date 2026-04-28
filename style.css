@@ -1,93 +1,160 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     background: linear-gradient(to right, #4facfe, #00f2fe);
     text-align: center;
-    margin: 0;
-    padding: 0;
 }
 
-.main-title {
-    color: white;
-    font-size: 32px;
-    margin-top: 35px;
-    font-weight: bold;
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 100px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.login-box {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background: white;
+}
+
+input, button {
+    margin: 5px;
+    padding: 8px;
+}
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    text-align: center;
 }
 
 .login-container {
     display: flex;
     justify-content: center;
-    gap: 60px;
-    margin-top: 80px;
-    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 100px;
 }
 
 .login-box {
     background: white;
-    padding: 30px;
-    width: 280px;
+    padding: 25px;
+    width: 260px;
     border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-.container {
+input {
     width: 90%;
-    margin: auto;
+    padding: 8px;
+    margin: 5px;
 }
 
+button {
+    padding: 10px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+}
+.logout-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.logout-btn {
+    background: #e74c3c;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+}
+.section-title {
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* Different colors */
+
+.student {
+    background: #3498db; /* blue */
+}
+
+.room {
+    background: #27ae60; /* green */
+}
+
+.fee {
+    background: #f39c12; /* orange */
+}
+
+.complaint {
+    background: #e74c3c; /* red */
+}
+
+.search {
+    background: #8e44ad; /* purple */
+}
+.section-title {
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Colors */
+.student {
+    background: #3498db; /* blue */
+}
+
+.room {
+    background: #27ae60; /* green */
+}
+
+.fee {
+    background: #f39c12; /* orange */
+}
+
+.complaint {
+    background: #e74c3c; /* red */
+}
+.raise {
+    background-color: #8e44ad; /* purple */
+}
 .card {
     background: white;
     margin: 20px auto;
     padding: 20px;
     border-radius: 15px;
     max-width: 900px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    text-align: center;
 }
 
-input {
-    width: 90%;
-    padding: 10px;
-    margin: 7px;
-    border: 1px solid #999;
-    border-radius: 5px;
+.card div {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
-button {
-    padding: 10px 14px;
-    margin: 6px;
-    background: #3498db;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #217dbb;
-}
-
-.logout-btn {
-    float: right;
-    margin: 15px;
-    background: #e74c3c;
-}
-
-.logout-btn:hover {
-    background: #c0392b;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    background: #f2f2f2;
-    margin: 8px;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.error {
-    color: red;
-    font-weight: bold;
+.card input {
+    width: 85%;
 }

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Web-Based Hostel Management System</title>
+    <title> 🏠 Web-Based Hostel Management System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<button onclick="logout()" class="logout-btn">Logout</button>
+
 
 <h1 class="main-title">🏠 Web-Based Hostel Management System</h1>
 <h2>Admin Dashboard</h2>
@@ -14,7 +14,7 @@
 <div class="container">
 
     <div class="card">
-        <h2>Student Management</h2>
+        <h2 class="section-title student">👥 Student Management</h2>
 
         <input type="hidden" id="studentEditIndex">
         <input id="id" placeholder="Student ID">
@@ -31,7 +31,7 @@
     </div>
 
     <div class="card">
-        <h2>Room Management</h2>
+        <h2 class="section-title room">🚪 Room Management</h2>
 
         <input type="hidden" id="roomEditIndex">
         <input id="room_id" placeholder="Room ID">
@@ -45,7 +45,7 @@
     </div>
 
     <div class="card">
-        <h2>Fee Management</h2>
+        <h2 class="section-title fee">💼 Fee Management</h2>
 
         <input type="hidden" id="feeEditIndex">
         <input id="student_id_fee" placeholder="Student ID">
@@ -59,7 +59,7 @@
     </div>
 
     <div class="card">
-        <h2>Complaint Management</h2>
+        <h2 class="section-title complaint">🐞 Complaint Management</h2>
 
         <input type="hidden" id="complaintEditIndex">
         <input id="student_id_comp" placeholder="Student ID">
@@ -73,11 +73,14 @@
     </div>
 
     <div class="card">
-        <h2>Search Student</h2>
+        <h2 class="section-title search">🔍 Search Student</h2>
         <input id="searchId" placeholder="Enter Student ID">
         <button onclick="searchStudent()">Search</button>
         <div id="result"></div>
     </div>
+    <div class="logout-container">
+    <button onclick="logout()" class="logout-btn">Logout</button>
+</div>
 
 </div>
 
