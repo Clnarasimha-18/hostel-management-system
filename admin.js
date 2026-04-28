@@ -21,23 +21,23 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [];
 let fees = JSON.parse(localStorage.getItem("fees")) || [];
 let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
 
+/* STUDENTS */
 function addStudent() {
     const student = {
-        id: document.getElementById("id").value,
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        room_id: document.getElementById("room").value,
-        fee_status: document.getElementById("fee").value
+        id: document.getElementById("id").value.trim(),
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        room_id: document.getElementById("room").value.trim(),
+        fee_status: document.getElementById("fee").value.trim()
     };
 
     if (!student.id || !student.name) {
-        alert("Enter student ID and name");
+        alert("Enter Student ID and Name");
         return;
     }
 
     students.push(student);
     localStorage.setItem("students", JSON.stringify(students));
-
     clearStudentForm();
     displayStudents();
 }
@@ -62,7 +62,7 @@ function displayStudents() {
 function editStudent(index) {
     const s = students[index];
 
-    document.getElementById("editIndex").value = index;
+    document.getElementById("studentEditIndex").value = index;
     document.getElementById("id").value = s.id;
     document.getElementById("name").value = s.name;
     document.getElementById("email").value = s.email;
@@ -71,7 +71,7 @@ function editStudent(index) {
 }
 
 function updateStudent() {
-    const index = document.getElementById("editIndex").value;
+    const index = document.getElementById("studentEditIndex").value;
 
     if (index === "") {
         alert("Click Edit first");
@@ -79,23 +79,21 @@ function updateStudent() {
     }
 
     students[index] = {
-        id: document.getElementById("id").value,
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        room_id: document.getElementById("room").value,
-        fee_status: document.getElementById("fee").value
+        id: document.getElementById("id").value.trim(),
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        room_id: document.getElementById("room").value.trim(),
+        fee_status: document.getElementById("fee").value.trim()
     };
 
     localStorage.setItem("students", JSON.stringify(students));
-
     clearStudentForm();
     displayStudents();
-
     alert("Student updated successfully");
 }
 
 function deleteStudent(index) {
-    if (confirm("Are you sure you want to delete this student?")) {
+    if (confirm("Delete this student?")) {
         students.splice(index, 1);
         localStorage.setItem("students", JSON.stringify(students));
         displayStudents();
@@ -103,7 +101,7 @@ function deleteStudent(index) {
 }
 
 function clearStudentForm() {
-    document.getElementById("editIndex").value = "";
+    document.getElementById("studentEditIndex").value = "";
     document.getElementById("id").value = "";
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
@@ -113,7 +111,7 @@ function clearStudentForm() {
 
 function generateStudents() {
     if (students.length > 0) {
-        alert("Students already exist!");
+        alert("Students already exist");
         return;
     }
 
@@ -131,18 +129,25 @@ function generateStudents() {
 
     localStorage.setItem("students", JSON.stringify(students));
     displayStudents();
-
-    alert("200 Students Generated Successfully");
+    alert("200 students generated");
 }
 
+/* ROOMS */
 function addRoom() {
-    rooms.push({
-        room_id: document.getElementById("room_id").value,
-        capacity: document.getElementById("capacity").value,
-        occupied: document.getElementById("occupied").value
-    });
+    const room = {
+        room_id: document.getElementById("room_id").value.trim(),
+        capacity: document.getElementById("capacity").value.trim(),
+        occupied: document.getElementById("occupied").value.trim()
+    };
 
+    if (!room.room_id) {
+        alert("Enter Room ID");
+        return;
+    }
+
+    rooms.push(room);
     localStorage.setItem("rooms", JSON.stringify(rooms));
+    clearRoomForm();
     displayRooms();
 }
 
@@ -152,21 +157,77 @@ function displayRooms() {
 
     list.innerHTML = "";
 
-    rooms.forEach(r => {
+    rooms.forEach((r, index) => {
         list.innerHTML += `
-            <li>Room ${r.room_id} | Capacity: ${r.capacity} | Occupied: ${r.occupied}</li>
+            <li>
+                Room ${r.room_id} | Capacity: ${r.capacity} | Occupied: ${r.occupied}
+                <button onclick="editRoom(${index})">Edit</button>
+                <button onclick="deleteRoom(${index})">Delete</button>
+            </li>
         `;
     });
 }
 
-function addFee() {
-    fees.push({
-        student_id: document.getElementById("student_id_fee").value,
-        amount: document.getElementById("amount").value,
-        status: document.getElementById("status_fee").value
-    });
+function editRoom(index) {
+    const r = rooms[index];
 
+    document.getElementById("roomEditIndex").value = index;
+    document.getElementById("room_id").value = r.room_id;
+    document.getElementById("capacity").value = r.capacity;
+    document.getElementById("occupied").value = r.occupied;
+}
+
+function updateRoom() {
+    const index = document.getElementById("roomEditIndex").value;
+
+    if (index === "") {
+        alert("Click Edit first");
+        return;
+    }
+
+    rooms[index] = {
+        room_id: document.getElementById("room_id").value.trim(),
+        capacity: document.getElementById("capacity").value.trim(),
+        occupied: document.getElementById("occupied").value.trim()
+    };
+
+    localStorage.setItem("rooms", JSON.stringify(rooms));
+    clearRoomForm();
+    displayRooms();
+    alert("Room updated successfully");
+}
+
+function deleteRoom(index) {
+    if (confirm("Delete this room?")) {
+        rooms.splice(index, 1);
+        localStorage.setItem("rooms", JSON.stringify(rooms));
+        displayRooms();
+    }
+}
+
+function clearRoomForm() {
+    document.getElementById("roomEditIndex").value = "";
+    document.getElementById("room_id").value = "";
+    document.getElementById("capacity").value = "";
+    document.getElementById("occupied").value = "";
+}
+
+/* FEES */
+function addFee() {
+    const fee = {
+        student_id: document.getElementById("student_id_fee").value.trim(),
+        amount: document.getElementById("amount").value.trim(),
+        status: document.getElementById("status_fee").value.trim()
+    };
+
+    if (!fee.student_id) {
+        alert("Enter Student ID for fee");
+        return;
+    }
+
+    fees.push(fee);
     localStorage.setItem("fees", JSON.stringify(fees));
+    clearFeeForm();
     displayFees();
 }
 
@@ -176,21 +237,77 @@ function displayFees() {
 
     list.innerHTML = "";
 
-    fees.forEach(f => {
+    fees.forEach((f, index) => {
         list.innerHTML += `
-            <li>${f.student_id} - ₹${f.amount} - ${f.status}</li>
+            <li>
+                ${f.student_id} - ₹${f.amount} - ${f.status}
+                <button onclick="editFee(${index})">Edit</button>
+                <button onclick="deleteFee(${index})">Delete</button>
+            </li>
         `;
     });
 }
 
-function addComplaint() {
-    complaints.push({
-        student_id: document.getElementById("student_id_comp").value,
-        message: document.getElementById("message").value,
-        status: document.getElementById("status_comp").value
-    });
+function editFee(index) {
+    const f = fees[index];
 
+    document.getElementById("feeEditIndex").value = index;
+    document.getElementById("student_id_fee").value = f.student_id;
+    document.getElementById("amount").value = f.amount;
+    document.getElementById("status_fee").value = f.status;
+}
+
+function updateFee() {
+    const index = document.getElementById("feeEditIndex").value;
+
+    if (index === "") {
+        alert("Click Edit first");
+        return;
+    }
+
+    fees[index] = {
+        student_id: document.getElementById("student_id_fee").value.trim(),
+        amount: document.getElementById("amount").value.trim(),
+        status: document.getElementById("status_fee").value.trim()
+    };
+
+    localStorage.setItem("fees", JSON.stringify(fees));
+    clearFeeForm();
+    displayFees();
+    alert("Fee updated successfully");
+}
+
+function deleteFee(index) {
+    if (confirm("Delete this fee record?")) {
+        fees.splice(index, 1);
+        localStorage.setItem("fees", JSON.stringify(fees));
+        displayFees();
+    }
+}
+
+function clearFeeForm() {
+    document.getElementById("feeEditIndex").value = "";
+    document.getElementById("student_id_fee").value = "";
+    document.getElementById("amount").value = "";
+    document.getElementById("status_fee").value = "";
+}
+
+/* COMPLAINTS */
+function addComplaint() {
+    const complaint = {
+        student_id: document.getElementById("student_id_comp").value.trim(),
+        message: document.getElementById("message").value.trim(),
+        status: document.getElementById("status_comp").value.trim()
+    };
+
+    if (!complaint.student_id || !complaint.message) {
+        alert("Enter Student ID and Complaint Message");
+        return;
+    }
+
+    complaints.push(complaint);
     localStorage.setItem("complaints", JSON.stringify(complaints));
+    clearComplaintForm();
     displayComplaints();
 }
 
@@ -200,15 +317,64 @@ function displayComplaints() {
 
     list.innerHTML = "";
 
-    complaints.forEach(c => {
+    complaints.forEach((c, index) => {
         list.innerHTML += `
-            <li>${c.student_id} - ${c.message} - ${c.status}</li>
+            <li>
+                ${c.student_id} - ${c.message} - ${c.status}
+                <button onclick="editComplaint(${index})">Edit</button>
+                <button onclick="deleteComplaint(${index})">Delete</button>
+            </li>
         `;
     });
 }
 
+function editComplaint(index) {
+    const c = complaints[index];
+
+    document.getElementById("complaintEditIndex").value = index;
+    document.getElementById("student_id_comp").value = c.student_id;
+    document.getElementById("message").value = c.message;
+    document.getElementById("status_comp").value = c.status;
+}
+
+function updateComplaint() {
+    const index = document.getElementById("complaintEditIndex").value;
+
+    if (index === "") {
+        alert("Click Edit first");
+        return;
+    }
+
+    complaints[index] = {
+        student_id: document.getElementById("student_id_comp").value.trim(),
+        message: document.getElementById("message").value.trim(),
+        status: document.getElementById("status_comp").value.trim()
+    };
+
+    localStorage.setItem("complaints", JSON.stringify(complaints));
+    clearComplaintForm();
+    displayComplaints();
+    alert("Complaint updated successfully");
+}
+
+function deleteComplaint(index) {
+    if (confirm("Delete this complaint?")) {
+        complaints.splice(index, 1);
+        localStorage.setItem("complaints", JSON.stringify(complaints));
+        displayComplaints();
+    }
+}
+
+function clearComplaintForm() {
+    document.getElementById("complaintEditIndex").value = "";
+    document.getElementById("student_id_comp").value = "";
+    document.getElementById("message").value = "";
+    document.getElementById("status_comp").value = "";
+}
+
+/* SEARCH */
 function searchStudent() {
-    const searchId = document.getElementById("searchId").value;
+    const searchId = document.getElementById("searchId").value.trim();
 
     const s = students.find(x => x.id === searchId);
     const r = rooms.find(x => x.room_id === s?.room_id);

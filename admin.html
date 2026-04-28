@@ -1,68 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Dashboard</title>
+    <title>Web-Based Hostel Management System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<button onclick="logout()">Logout</button>
-<h1>Admin Dashboard</h1>
+<button onclick="logout()" class="logout-btn">Logout</button>
+
+<h1 class="main-title">🏠 Web-Based Hostel Management System</h1>
+<h2>Admin Dashboard</h2>
 
 <div class="container">
 
-<!-- STUDENTS -->
-<div class="card">
-<h2>Add Student</h2>
-<input id="id" placeholder="ID">
-<input id="name" placeholder="Name">
-<input id="email" placeholder="Email">
-<input id="room" placeholder="Room ID">
-<input id="fee" placeholder="Fee Status">
+    <div class="card">
+        <h2>Student Management</h2>
 
-<button onclick="addStudent()">Add Student</button>
-<button onclick="generateStudents()">Generate 200 Students</button>
+        <input type="hidden" id="studentEditIndex">
+        <input id="id" placeholder="Student ID">
+        <input id="name" placeholder="Name">
+        <input id="email" placeholder="Email">
+        <input id="room" placeholder="Room ID">
+        <input id="fee" placeholder="Fee Status">
 
-<ul id="studentList"></ul>
-</div>
+        <button onclick="addStudent()">Add Student</button>
+        <button onclick="updateStudent()">Update Student</button>
+        <button onclick="generateStudents()">Generate 200 Students</button>
 
-<!-- ROOMS -->
-<div class="card">
-<h2>Add Room</h2>
-<input id="room_id" placeholder="Room ID">
-<input id="capacity" placeholder="Capacity">
-<input id="occupied" placeholder="Occupied">
-<button onclick="addRoom()">Add</button>
-<ul id="roomList"></ul>
-</div>
+        <ul id="studentList"></ul>
+    </div>
 
-<!-- FEES -->
-<div class="card">
-<h2>Add Fee</h2>
-<input id="student_id_fee" placeholder="Student ID">
-<input id="amount" placeholder="Amount">
-<input id="status_fee" placeholder="Status">
-<button onclick="addFee()">Add</button>
-<ul id="feeList"></ul>
-</div>
+    <div class="card">
+        <h2>Room Management</h2>
 
-<!-- COMPLAINTS -->
-<div class="card">
-<h2>Add Complaint</h2>
-<input id="student_id_comp" placeholder="Student ID">
-<input id="message" placeholder="Message">
-<input id="status_comp" placeholder="Status">
-<button onclick="addComplaint()">Add</button>
-<ul id="complaintList"></ul>
-</div>
+        <input type="hidden" id="roomEditIndex">
+        <input id="room_id" placeholder="Room ID">
+        <input id="capacity" placeholder="Capacity">
+        <input id="occupied" placeholder="Occupied">
 
-<!-- SEARCH -->
-<div class="card">
-<h2>Search Student</h2>
-<input id="searchId" placeholder="Enter Student ID">
-<button onclick="searchStudent()">Search</button>
-<div id="result"></div>
-</div>
+        <button onclick="addRoom()">Add Room</button>
+        <button onclick="updateRoom()">Update Room</button>
+
+        <ul id="roomList"></ul>
+    </div>
+
+    <div class="card">
+        <h2>Fee Management</h2>
+
+        <input type="hidden" id="feeEditIndex">
+        <input id="student_id_fee" placeholder="Student ID">
+        <input id="amount" placeholder="Amount">
+        <input id="status_fee" placeholder="Status">
+
+        <button onclick="addFee()">Add Fee</button>
+        <button onclick="updateFee()">Update Fee</button>
+
+        <ul id="feeList"></ul>
+    </div>
+
+    <div class="card">
+        <h2>Complaint Management</h2>
+
+        <input type="hidden" id="complaintEditIndex">
+        <input id="student_id_comp" placeholder="Student ID">
+        <input id="message" placeholder="Complaint Message">
+        <input id="status_comp" placeholder="Status">
+
+        <button onclick="addComplaint()">Add Complaint</button>
+        <button onclick="updateComplaint()">Update Complaint</button>
+
+        <ul id="complaintList"></ul>
+    </div>
+
+    <div class="card">
+        <h2>Search Student</h2>
+        <input id="searchId" placeholder="Enter Student ID">
+        <button onclick="searchStudent()">Search</button>
+        <div id="result"></div>
+    </div>
 
 </div>
 
