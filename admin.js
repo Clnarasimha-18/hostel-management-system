@@ -418,3 +418,51 @@ if (location.pathname.includes("admin.html")) {
     displayFees();
     displayComplaints();
 }
+function loadChart() {
+
+    const students = JSON.parse(localStorage.getItem("students")) || [];
+    const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
+    const fees = JSON.parse(localStorage.getItem("fees")) || [];
+    const complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+
+    const ctx = document.getElementById("myChart");
+
+    if (!ctx) return;
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Students', 'Rooms', 'Fees', 'Complaints'],
+            datasets: [{
+                label: 'Total Count',
+                data: [
+                    students.length,
+                    rooms.length,
+                    fees.length,
+                    complaints.length
+                ],
+                backgroundColor: [
+                    '#3498db',
+                    '#27ae60',
+                    '#f39c12',
+                    '#e74c3c'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+}
+if (location.pathname.includes("admin.html")) {
+    displayStudents();
+    displayRooms();
+    displayFees();
+    displayComplaints();
+    loadChart();   // 👈 ADD THIS
+}
