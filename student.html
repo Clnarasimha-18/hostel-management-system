@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Dashboard</title>
+    <title>Web-Based Hostel Management System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<button onclick="logoutStudent()">Logout</button>
+<button onclick="logoutStudent()" class="logout-btn">Logout</button>
 
-<h1>Student Dashboard</h1>
+<h1 class="main-title">🏠 Web-Based Hostel Management System</h1>
+<h2>Student Dashboard</h2>
 
-<div class="card">
-    <h2>Student Details</h2>
-    <div id="profile"></div>
-</div>
+<div class="container">
 
-<div class="card">
-    <h2>Room Details</h2>
-    <div id="roomDetails"></div>
-</div>
+    <div class="card">
+        <h2>Student Details</h2>
+        <div id="profile"></div>
+    </div>
 
-<div class="card">
-    <h2>Fee Details</h2>
-    <div id="feeDetails"></div>
-</div>
+    <div class="card">
+        <h2>Room Details</h2>
+        <div id="roomDetails"></div>
+    </div>
 
-<div class="card">
-    <h2>My Complaints</h2>
-    <div id="complaints"></div>
-</div>
+    <div class="card">
+        <h2>Fee Details</h2>
+        <div id="feeDetails"></div>
+    </div>
 
-<div class="card">
-    <h2>Raise Complaint</h2>
-    <input id="newComplaint" placeholder="Enter complaint">
-    <button onclick="addComplaint()">Submit</button>
+    <div class="card">
+        <h2>My Complaints</h2>
+        <div id="complaints"></div>
+    </div>
+
+    <div class="card">
+        <h2>Raise Complaint</h2>
+        <input id="newComplaint" placeholder="Enter your complaint">
+        <button onclick="addComplaint()">Submit Complaint</button>
+    </div>
+
 </div>
 
 <script src="student.js"></script>

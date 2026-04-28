@@ -1,36 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <h1 class="main-title">🏠 Web-Based Hostel Management System</h1>
+    <title>Web-Based Hostel Management System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<h1 class="main-title">🏠 Web-Based Hostel Management System</h1>
 
 <div class="login-container">
-
-    <!-- ADMIN LOGIN -->
     <div class="login-box">
         <h2>Admin Login</h2>
-        <input id="adminUser" placeholder="Username">
-        <input id="adminPass" type="password" placeholder="Password">
-        <button onclick="adminLogin()">Login</button>
-        <p id="adminError" class="error"></p>
+        <button onclick="location.href='admin-login.html'">Go to Admin Login</button>
     </div>
 
-    <!-- STUDENT LOGIN -->
     <div class="login-box">
         <h2>Student Login</h2>
-        <input id="studentUser" placeholder="Student ID">
-        <input id="studentPass" type="password" placeholder="Password">
-        <button onclick="studentLogin()">Login</button>
-        <p id="studentError" class="error"></p>
+        <button onclick="location.href='student-login.html'">Go to Student Login</button>
     </div>
-
 </div>
-
-<script src="admin.js"></script>
-<script src="student.js"></script>
 
 </body>
 </html>

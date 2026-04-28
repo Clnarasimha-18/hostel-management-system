@@ -1,9 +1,8 @@
-// STUDENT LOGIN
 function studentLogin() {
     const user = document.getElementById("studentUser").value;
     const pass = document.getElementById("studentPass").value;
 
-    if (user === "" || pass === "") {
+    if (!user || !pass) {
         document.getElementById("studentError").innerText = "Enter Student ID and Password";
         return;
     }
@@ -16,9 +15,7 @@ function studentLogin() {
     }
 }
 
-// STUDENT DASHBOARD
 if (location.pathname.includes("student.html")) {
-
     const studentId = localStorage.getItem("student");
 
     if (!studentId) {
@@ -60,11 +57,33 @@ if (location.pathname.includes("student.html")) {
 
     document.getElementById("complaints").innerHTML =
         c.length
-        ? c.map(x => `<p>${x.message} - ${x.status}</p>`).join("")
-        : "No complaints";
+            ? c.map(x => `<p>${x.message} - ${x.status}</p>`).join("")
+            : "No complaints";
 }
 
-// LOGOUT
+function addComplaint() {
+    const studentId = localStorage.getItem("student");
+    let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+
+    const msg = document.getElementById("newComplaint").value;
+
+    if (!msg) {
+        alert("Enter complaint");
+        return;
+    }
+
+    complaints.push({
+        student_id: studentId,
+        message: msg,
+        status: "Pending"
+    });
+
+    localStorage.setItem("complaints", JSON.stringify(complaints));
+
+    alert("Complaint submitted successfully");
+    location.reload();
+}
+
 function logoutStudent() {
     localStorage.removeItem("student");
     window.location.href = "index.html";
